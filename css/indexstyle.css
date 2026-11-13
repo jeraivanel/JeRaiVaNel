@@ -1,0 +1,146 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+img { max-width: 100%; height: auto; }
+
+/*sizes*/
+
+:root {
+    --logo-w: clamp(280px, 30vw, 520px);
+    --name-w: clamp(200px, 22vw, 380px);
+    --plane-w: clamp(110px, 15vw, 215px);
+
+    /* corner graphics: same idea as the plane - they have a minimum
+       and a maximum size, so they never shrink away on small screens */
+    --tl-w: clamp(170px, 28.35vw, 560px);
+    --tr-w: clamp(190px, 32.67vw, 640px);
+    --bl-w: clamp(250px, 44.6vw, 880px);
+    --br-w: clamp(150px, 26.2vw, 520px);
+    --corner-drop: clamp(0px, 5vw, 85px);   /* pushes the bottom corners down on desktop to match your original */
+}
+
+html { overflow-x: hidden; }
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    min-height: 100vh;
+    min-height: 100dvh;
+    color: #fff;
+    overflow-x: hidden;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(1.5px);
+    z-index: -1;
+}
+
+/* whole page grows with  content */
+.page {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.stage {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Corner graphics */
+.bg-element {
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.95;
+    max-width: none;
+    height: auto;
+}
+
+.corner-tl { width: var(--tl-w); left:  calc(var(--tl-w) * -0.323); top:    calc(var(--tl-w) * -0.300); }
+.corner-tr { width: var(--tr-w); right: calc(var(--tr-w) * -0.447); top:    calc(var(--tr-w) * -0.387); }
+.corner-bl { width: var(--bl-w); left:  calc(var(--bl-w) * -0.504); bottom: calc(var(--bl-w) * -0.532 - var(--corner-drop)); }
+.corner-br { width: var(--br-w); right: calc(var(--br-w) * -0.251); bottom: calc(var(--br-w) * -0.239 - var(--corner-drop)); }
+
+/* Airplane GIF sa bottom right */
+.airplane-moving {
+    position: absolute;
+    z-index: 3;
+    width: var(--plane-w);
+    max-width: none;
+    right: calc(var(--plane-w) * 0.6);
+    bottom: calc(var(--plane-w) * -0.1);
+    pointer-events: none;
+    filter: drop-shadow(0 8px 12px rgba(10, 151, 8, 0.895));
+}
+
+/* Main Content  */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: clamp(100px, 9vw, 150px) 20px 40px;
+    position: relative;
+    z-index: 2;
+}
+
+.main-logo {
+    display: block;
+    width: var(--logo-w);
+    margin-bottom: clamp(8px, 2.5vw, 36px);
+    filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.35));
+}
+
+.name-img {
+    display: block;
+    width: var(--name-w);
+    margin-bottom: clamp(10px, 1.5vw, 24px);
+    filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.35));
+}
+
+.subtitle {
+    font-size: clamp(0.9rem, 1.6vw, 2rem);
+    font-weight: 600;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+    letter-spacing: 0.8px;
+    margin-bottom: clamp(20px, 2.8vw, 45px);
+    max-width: 92vw;
+}
+
+.get-started {
+    display: inline-block;
+    cursor: pointer;
+    background: linear-gradient(135deg, #225a38, #348a54);
+    color: #ffffff;
+    padding: clamp(12px, 1.2vw, 22px) clamp(35px, 4.5vw, 80px);
+    font-size: clamp(0.95rem, 1.4vw, 1.7rem);
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    border-radius: 50px;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.get-started:hover {
+    transform: translateY(-3px) scale(1.02);
+    background: linear-gradient(135deg, #286d44, #3da162);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+/* media queries */
+@media (max-width: 768px) {
+    main { padding: 110px 16px 30px; }
+}

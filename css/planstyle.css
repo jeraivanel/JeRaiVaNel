@@ -1,0 +1,183 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    min-height: 100vh;
+    display: block;
+    color: #fff;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Background overlay */
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.08);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/*  MAIN PAGE LAYOUT */
+
+.page-content {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* sizes again */
+
+:root {
+    --card: clamp(300px, 36vw, 520px);   /* width of  cards     */
+    --btn: clamp(150px, 15vw, 200px);    /* width of compasses  */
+    --heading-w: clamp(280px, 55vw, 760px);
+}
+
+/* MAIN CONTENT */
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: clamp(90px, 9vw, 130px) 20px 30px;  
+    position: relative;
+    z-index: 2;
+}
+
+.heading-container { width: var(--heading-w); margin-bottom: clamp(10px, 2vw, 30px); }
+.heading-image { display: block; width: 100%; height: auto; }
+
+/*  CARDS (flex that wraps, no overlap)*/
+
+.journey-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(16px, 3vw, 50px);
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.select-card {
+    position: relative;
+    width: var(--card);
+    aspect-ratio: 475 / 225;     
+    flex-shrink: 0;
+}
+
+.card-border {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.border-title {
+    position: absolute;
+    top: 17%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #e9f5e2;
+    font-size: calc(var(--card) * 0.043);
+    font-weight: 800;
+    letter-spacing: 2px;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.pill {
+    position: absolute;
+    left: 6.3%;
+    top: 40%;
+    width: 83.4%;
+}
+.destination-card .pill { left: 8.05%; top: 41.8%; width: 83.9%; }
+
+.pill img { display: block; width: 100%; height: auto; pointer-events: none; }
+
+.pill select {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 84%;
+    height: 66%;
+    padding: 0 0.9em;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #225505;
+    font-family: 'Quicksand', sans-serif;
+    font-size: max(0.8rem, calc(var(--card) * 0.034));
+    font-weight: 700;
+    outline: none;
+    cursor: pointer;
+}
+.pill select:focus { border-color: #348a54; box-shadow: 0 0 0 3px rgba(52, 138, 84, 0.2); }
+.pill select option { background: #fff; color: #225505; }
+
+/* GO button*/
+
+#save-route-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    width: var(--btn);
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
+    transition: transform 0.3s ease;
+}
+#save-route-btn:hover { transform: scale(1.05); }
+
+.next-image { display: block; width: 100%; height: auto; pointer-events: none; }
+
+.next-subtitle {
+    position: absolute;
+    top: 50%;
+    left: 51%;
+    transform: translate(-50%, -50%);
+    color: #e7cd0f;
+    font-size: calc(var(--btn) * 0.12);
+    font-weight: 800;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+#route-message {
+    font-size: 1rem;
+    color: #032008;
+    font-weight: 700;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.6);
+    margin: 4px 0 10px;
+    min-height: 1.4em;
+}
+
+footer {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+/* media queriess */
+
+@media (max-width: 768px) {
+    :root { --card: min(88vw, 420px); --btn: 150px; --heading-w: min(88vw, 520px); }
+    .main-content { padding: 110px 15px 30px; }
+    .journey-container { flex-direction: column; }
+}

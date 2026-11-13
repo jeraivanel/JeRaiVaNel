@@ -1,0 +1,264 @@
+/*  effects css for every page, should be linked to effects.js*/
+
+html { overflow-x: hidden; }
+
+@keyframes fx-fade-up   
+{from { opacity: 0; transform: translateY(28px);} to {opacity: 1; transform: translateY(0);}}
+
+@keyframes fx-fade-down 
+{from {opacity: 0; transform: translateY(-24px);} to {opacity: 1; transform: translateY(0);}}
+
+@keyframes fx-from-left  
+{from {opacity: 0; transform: translateX(-45px);} to {opacity: 1; transform: translateX(0);}}
+
+@keyframes fx-from-right
+{from {opacity: 0; transform: translateX(45px);} to {opacity: 1; transform: translateX(0);}}
+
+@keyframes fx-pop      
+{ 0% {opacity: 0; transform: scale(0.82);} 
+    70% {transform: scale(1.04);} 
+    100% {opacity: 1; transform: scale(1); } 
+}
+
+@keyframes fx-nav-in
+{from {opacity: 0; transform: translate(-50%, -34px);} to {opacity: 1; transform: translate(-50%, 0);}}
+
+@keyframes fx-float 
+{   0%, 
+    100% {transform: translateY(0);} 
+    50% {transform: translateY(-10px);}}
+
+@keyframes fx-bob       
+{    0%, 
+    100% {transform: translate(0, 0);} 
+    50% {transform: translate(6px, -8px);}}
+
+@keyframes fx-drift     
+{   0%, 
+    100% {transform: translate(0, 0);} 
+    50% {transform: translate(10px, 8px);}}
+
+@keyframes fx-glow     
+{   0%, 
+    100% {filter: drop-shadow(0 0 0 rgba(234, 231, 10, 0));} 
+    50% {filter: drop-shadow(0 0 14px rgba(234, 231, 10, 0.85));}}
+
+@keyframes fx-btn-pulse
+{   0%, 
+    100% {box-shadow: 0 10px 25px rgba(0,0,0,.3), 0 0 0 0 rgba(255,255,255,.55);} 
+    50% {box-shadow: 0 10px 25px rgba(0,0,0,.3), 0 0 0 14px rgba(255,255,255,0);}}
+
+@keyframes fx-shine     
+{   0% { left: -80%; } 
+    55%, 
+    100% { left: 130%; } 
+}
+
+@keyframes fx-title-glow 
+{   0%, 
+    100% {text-shadow: 0 2px 5px rgba(13,53,4,.5);} 
+    50% {text-shadow: 0 2px 5px rgba(13,53,4,.5), 0 0 18px rgba(234,231,10,.65);}}
+@keyframes fx-sel-pulse 
+{   0%, 
+    100% {box-shadow: 0 0 0 0 rgba(34,85,5,.35);} 
+    50% {box-shadow: 0 0 0 7px rgba(34,85,5,0);}
+}
+    
+@keyframes fx-flash     
+{   0% {opacity: 0; transform: translateY(8px);} 
+    100% {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes fx-ambient   
+{   0% {background-position: 0% 0%, 100% 100%;} 
+    100% {background-position: 100% 60%, 0% 20%;} 
+}
+@keyframes fx-rise      
+{   0% {transform: translateY(0) translateX(0); opacity: 0;} 
+    12% {opacity: var(--o, .6);} 
+    85% {opacity: var(--o, .6);} 
+    100% {transform: translateY(-115vh) translateX(var(--dx, 30px)); opacity: 0;}
+}
+
+@keyframes fx-ripple    
+{ to {transform: scale(4); opacity: 0;} 
+}
+
+
+/* css for floating particless */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 20% 25%, rgba(255, 255, 210, 0.16), transparent 38%),
+        radial-gradient(circle at 80% 75%, rgba(190, 255, 200, 0.14), transparent 40%);
+    background-size: 160% 160%, 160% 160%;
+    animation: fx-ambient 18s ease-in-out infinite alternate;
+}
+
+.fx-particles { position: fixed; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+.fx-particle {
+    position: absolute;
+    bottom: -20px;
+    border-radius: 50%;
+    animation: fx-rise linear infinite;
+}
+
+/*  navigation bar  */
+.navbar { 
+    animation: fx-nav-in 0.7s cubic-bezier(.2,.8,.2,1) backwards; 
+    transition: background .3s ease, box-shadow .3s ease, padding .3s ease; 
+}
+
+.navbar.scrolled { 
+    background: rgba(255, 255, 255, 0.22); 
+    box-shadow: 0 12px 34px rgba(0, 0, 0, 0.22); 
+}
+
+.nav-links li a:hover {transform: translateY(-2px);}
+
+.nav-links li a.active {animation: fx-glow 3.2s ease-in-out infinite;}
+
+
+/*  footer  */
+footer { animation: fx-fade-up 0.8s ease-out 0.4s backwards; }
+
+/*  HOME PAGE  */
+.main-logo  {animation: fx-pop 0.9s cubic-bezier(.2,.8,.2,1) 0.15s backwards, fx-float 5s ease-in-out 1.2s infinite;}
+
+.name-img   {animation: fx-fade-up 0.8s ease-out 0.4s backwards;}
+
+.subtitle   {animation: fx-fade-up 0.8s ease-out 0.6s backwards;}
+
+.get-started {
+    position: relative;
+    overflow: hidden;
+    animation: fx-fade-up 0.8s ease-out 0.8s backwards, fx-btn-pulse 2.6s ease-in-out 1.8s infinite;
+}
+.get-started::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -80%;
+    width: 50%; height: 100%;
+    background: linear-gradient(100deg, transparent, rgba(255,255,255,.45), transparent);
+    transform: skewX(-20deg);
+    animation: fx-shine 3.6s ease-in-out 2s infinite;
+}
+.airplane-moving {animation: fx-bob 4.5s ease-in-out infinite;}
+.corner-tl, .corner-bl {animation: fx-drift 14s ease-in-out infinite;}
+.corner-tr, .corner-br {animation: fx-drift 16s ease-in-out -6s infinite reverse;}
+
+/*  PLAN PAGE  */
+.heading-container {animation: fx-fade-down 0.8s cubic-bezier(.2,.8,.2,1) 0.1s backwards;}
+.heading-image     {animation: fx-float 6s ease-in-out 1s infinite;}
+.start-card        {animation: fx-from-left 0.8s cubic-bezier(.2,.8,.2,1) 0.3s backwards;} 
+.destination-card  {animation: fx-from-right 0.8s cubic-bezier(.2,.8,.2,1) 0.45s backwards;}
+#save-route-btn    {animation: fx-pop 0.7s ease-out 0.8s backwards;}
+
+/* EXPLORE PAGE  */
+main h1 {animation: fx-fade-down 0.8s cubic-bezier(.2,.8,.2,1) 0.1s backwards, fx-title-glow 4s ease-in-out 1s infinite;}
+
+.journey-row .select-card {animation: fx-pop 0.8s cubic-bezier(.2,.8,.2,1) 0.3s backwards;}
+#save-type-btn     {animation: fx-pop 0.7s ease-out 0.7s backwards;}
+
+/*  cards: hover lift  */
+.select-card {transition: transform .3s ease, filter .3s ease;}
+
+.select-card:hover {transform: translateY(-5px) scale(1.015); 
+    filter: drop-shadow(0 12px 18px rgba(0,0,0,.25)); 
+}
+
+.pill select {transition: box-shadow .25s ease, border-color .25s ease, background .25s ease;}
+
+.pill select:hover { 
+    background: #fff; 
+    box-shadow: 0 0 0 3px rgba(255,255,255,.55); 
+}
+
+/* GO compass buttons  */
+#save-route-btn, #save-type-btn {transition: transform .3s ease;}
+.next-image { 
+    transition: transform .6s cubic-bezier(.2,.8,.2,1); 
+    animation: fx-glow 3s ease-in-out 1.5s infinite; 
+}
+
+#save-route-btn:hover .next-image,
+#save-type-btn:hover .next-image {transform: rotate(18deg);}
+
+#save-route-btn:active, #save-type-btn:active {transform: scale(0.94);}
+
+.next-subtitle {transition: letter-spacing .3s ease;}
+
+#save-route-btn:hover .next-subtitle,
+#save-type-btn:hover .next-subtitle {letter-spacing: 3px;}
+
+/*  messages  */
+#route-message:not(:empty), #type-message:not(:empty) {animation: fx-flash .4s ease-out;}
+
+/*  NAVIGATE PAGE  */
+.journey-panel          {animation: fx-fade-up 0.8s ease-out 0.1s backwards;}
+
+.map-panel              {animation: fx-fade-up 0.8s ease-out 0.25s backwards;}
+
+.current-place-panel    {animation: fx-fade-up 0.8s ease-out 0.4s backwards;}
+
+.navigate-layout > section,
+.current-place-panel    {transition: transform .35s ease, box-shadow .35s ease;}
+
+.navigate-layout > section:hover,
+.current-place-panel:hover { 
+    transform: translateY(-4px); 
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.2); 
+}
+
+#places-list li {animation: fx-from-left 0.5s ease-out backwards;}
+
+#places-list li:nth-child(1) {animation-delay: .15s;}
+#places-list li:nth-child(2) {animation-delay: .25s;}
+#places-list li:nth-child(3) {animation-delay: .35s;}
+#places-list li:nth-child(4) {animation-delay: .45s;}
+#places-list li:nth-child(5) {animation-delay: .55s;}
+#places-list li:nth-child(n+6) {animation-delay: .65s;}
+
+.place-card { 
+    position: relative; 
+    overflow: hidden;
+}
+
+.place-card.selected {animation: fx-sel-pulse 2s ease-in-out infinite;}
+.route-marker {animation: fx-sel-pulse 2.4s ease-in-out infinite;}
+.map-wrapper {transition: box-shadow .3s ease;}
+.map-wrapper:hover {box-shadow: 0 8px 24px rgba(0,0,0,.25);}
+
+.fx-flash {animation: fx-flash .5s ease-out;}
+#current-place-img:not([hidden]) {animation: fx-pop .6s ease-out;}
+
+#complete-btn {position: relative; overflow: hidden;}
+
+/*  JOURNEY DETAILS  */
+.polaroid {transition: transform .3s ease, box-shadow .3s ease; animation: fx-pop .6s ease-out backwards;}
+.polaroid:nth-child(2) {animation-delay: .15s;}
+.polaroid:nth-child(3) {animation-delay: .3s;}
+.polaroid:hover {transform: rotate(-2.5deg) scale(1.06);}
+
+/*   ripple (this is nasa effects.js (added by it)  */
+.fx-ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.55);
+    transform: scale(0);
+    animation: fx-ripple 0.6s ease-out forwards;
+    pointer-events: none;
+}
+
+/* media queries */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition-duration: 0.01ms !important;
+    }
+    .fx-particle { animation: none !important; opacity: .28; }
+}

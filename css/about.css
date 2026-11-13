@@ -1,0 +1,192 @@
+/* ABOUT US CSSSSS (put this sa about.html) */
+
+/* ---------- ABOUT ---------- */
+.ab-cols{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+  max-width:1300px;
+  margin:0 auto
+}
+
+.col{
+  display:flex;
+  flex-direction:column;
+  gap:14px
+}
+
+.col h2{
+  text-align:center;
+  font-size:clamp(1.3rem,2.2vw,2.3rem);
+  color:var(--gold);
+  letter-spacing:1px;
+  text-shadow:0 2px 5px rgba(0,0,0,.5)
+}
+
+.ab-card{
+  flex:1;min-height:clamp(420px,40vw,620px)
+  ;padding:18px 26px 28px;
+  text-align:center
+}
+
+.ab-card h3{
+  font-size:clamp(1.4rem,2.2vw,2.3rem);
+  font-weight:600;
+  text-shadow:0 2px 5px rgba(0,0,0,.45)
+}
+
+.ab-card h3.light{font-weight:400}
+
+.social-row{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:18px;
+  margin:26px 0
+}
+
+.social{
+  width:clamp(52px,5vw,82px);
+  aspect-ratio:1;
+  border-radius:50%;
+  background:rgba(255,255,255,.28);
+  border:1px solid var(--edge);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 4px 10px rgba(0,0,0,.25);
+  transition:.15s
+}
+
+.social:hover{
+  background:rgba(255,255,255,.45);
+  transform:translateY(-3px)
+}
+
+.social img{
+  width:56%;
+  height:56%;
+  object-fit:contain;
+  border-radius:50%
+}
+
+.about-text{
+  text-align:justify;
+  line-height:1.6;
+  font-size:clamp(1rem,1.5vw,1.6rem)
+}
+
+.about-text strong{
+  display:block;
+  text-align:center;
+  color:var(--gold);
+  font-size:1.3em;
+  margin-bottom:8px
+}
+
+.ab-card{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center
+}
+
+.ab-card h3{margin:6px 0}
+
+.about-logo{
+  width:clamp(90px,10vw,150px);
+  height:auto;margin-bottom:10px;
+  filter:drop-shadow(0 3px 6px rgba(0,0,0,.35))
+}
+
+/* The Team Section heree */
+.team{
+  position:relative;
+  width:min(100%,460px);
+  aspect-ratio:1;margin:0 auto;
+  list-style:none;
+  padding:0;
+  --r:37%
+}
+
+.team::after{
+  content:"\273F";
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  font-size:clamp(2.6rem,4.4vw,4.6rem);
+  color:#fff;
+  opacity:.95
+}
+
+.member{
+  position:absolute;
+  transform:translate(-50%,-50%);
+  text-align:center;
+  line-height:1.15;
+  font-size:clamp(.75rem,1vw,1.05rem);
+  font-weight:700
+}
+
+.member img{
+  display:block;
+  width:clamp(60px,5.8vw,92px);
+  aspect-ratio:1;
+  border-radius:50%;
+  object-fit:cover;
+  border:3px dashed var(--lime);
+  padding:2px;
+  background:rgba(255,255,255,.3);
+  transition:.2s
+}
+
+.member:hover img{transform:scale(1.1)}
+
+.member p{
+  position:absolute;
+  top:100%;left:50%;
+  transform:translateX(-50%);
+  white-space:nowrap;
+  margin-top:4px
+}
+
+.member span{
+  display:block;
+  font-weight:400
+}
+
+/* photo positions na pa circle */
+.m5{
+  left:50%;
+  top:calc(50% + var(--r));
+  color:var(--gold)
+}
+
+.m3{
+  left:calc(50% - var(--r)*.951);
+  top:calc(50% + var(--r)*.309);
+  color:var(--lime)
+}
+
+.m1{left:calc(
+  50% - var(--r)*.588);
+  top:calc(50% - var(--r)*.809);
+  color:var(--lime)
+}
+
+.m2{
+  left:calc(50% + var(--r)*.588);
+  top:calc(50% - var(--r)*.809);
+  color:#4ee08e
+}
+
+.m4{
+left:calc(50% + var(--r)*.951);
+top:calc(50% + var(--r)*.309);
+color:#ffc766
+}
+
+/* mediq query */
+@media (max-width:900px){
+  .ab-cols{grid-template-columns:1fr}
+}

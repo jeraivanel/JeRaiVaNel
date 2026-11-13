@@ -1,0 +1,608 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    position: relative;
+}
+
+/* 
+   journer colorsss
+ */
+
+body {
+    --journey-accent: #225505;
+    --journey-gradient: linear-gradient(135deg, #225505, #eae70a);
+    --journey-soft: rgba(34, 85, 5, 0.12);
+    --journey-border: rgba(34, 85, 5, 0.45);
+    --journey-text: #225505;
+}
+
+/* SCENIC: TEAL BLUE TO PASTEL YELLOW */
+body.theme-scenic {
+    --journey-accent: #168C91;
+
+    --journey-gradient: linear-gradient(
+        135deg,
+        rgba(22, 140, 145, 0.45),
+        rgba(85, 185, 181, 0.45),
+        rgba(185, 220, 208, 0.45),
+        rgba(245, 233, 166, 0.45)
+    );
+
+    --journey-soft: rgba(85, 185, 181, 0.16);
+    --journey-border: rgba(22, 140, 145, 0.55);
+    --journey-text: #14777B;
+}
+
+/* FOODIE: PURPLE TO LIGHT BLUE */
+body.theme-foodie {
+    --journey-accent: #7652B8;
+
+    --journey-gradient: linear-gradient(
+        135deg,
+        rgba(118, 82, 184, 0.45),
+        rgba(162, 138, 216, 0.45),
+        rgba(185, 200, 240, 0.45),
+        rgba(161, 211, 246, 0.45)
+    );
+
+    --journey-soft: rgba(162, 138, 216, 0.16);
+    --journey-border: rgba(118, 82, 184, 0.55);
+    --journey-text: #6847A5;
+}
+
+/* BUDGET: ORANGE TO YELLOW */
+body.theme-budget {
+    --journey-accent: #E87525;
+
+    --journey-gradient: linear-gradient(
+        135deg,
+        rgba(234, 98, 1, 0.45),
+        rgba(244, 154, 54, 0.45),
+        rgba(255, 198, 92, 0.45),
+        rgba(247, 255, 154, 0.45)
+    );
+
+    --journey-soft: rgba(244, 154, 54, 0.16);
+    --journey-border: rgba(232, 117, 37, 0.55);
+    --journey-text: #C65D1C;
+}
+
+/* 
+   BACKGROUND OVERLAY - ORIGINAL
+*/
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.08);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* 
+   MAIN CONTENT
+ */
+
+main {
+    flex: 1;
+    width: 100%;
+    padding: 130px 5% 50px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+main h1 {
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: 800;
+    color: #eae70a;
+    text-shadow: 0 2px 5px rgba(13, 53, 4, 0.5);
+    margin-bottom: 10px;
+}
+
+main p {
+    color: #032008;
+    font-size: 1rem;
+    font-weight: 600;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.6);
+}
+
+/* TOP LAYOUT - 40% / 60% */
+
+.navigate-layout {
+    width: min(100%, 1400px);
+
+    display: grid;
+    grid-template-columns: 40fr 60fr;
+    gap: 25px;
+
+    align-items: stretch;
+}
+
+/* GLASS PANEL DESIGN - ORIGINAL STYLE */
+
+.navigate-layout > section,
+.current-place-panel {
+    min-width: 0;
+    padding: 25px;
+
+    background:
+        linear-gradient(
+            rgba(255, 255, 255, 0.236),
+            rgba(255, 255, 255, 0)
+        ) padding-box,
+        var(--journey-gradient) border-box;
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border: 2px solid transparent;
+    border-radius: 25px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/*  PANEL HEADINGS */
+
+.panel-heading {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(34, 85, 5, 0.2);
+}
+
+.panel-number {
+    color: #eae70a;
+    background: rgba(34, 85, 5, 0.9);
+
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+
+    font-size: 0.85rem;
+    font-weight: 800;
+}
+
+main section h2 {
+    color: #225505;
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+/* LEFT PANEL - JOURNEY INFORMATION */
+
+.journey-panel {
+    text-align: left;
+}
+
+/* JOURNEY TYPE */
+#journey-type-label {
+    width: 100%;
+    display: block;
+    text-align: center;
+    padding: 12px;
+    margin: 0 0 12px;
+
+    background: #225505;
+    color: #fff;
+    border-radius: 10px;
+
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.journey-panel > h1 {
+    width: 100%;
+    font-size: clamp(1.7rem, 2.5vw, 2.5rem);
+    text-align: center;
+    margin: 5px 0;
+}
+
+/* CENTERED JOURNEY DETAILS */
+
+.route-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+}
+
+.route-item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 8px;
+}
+
+.route-item strong {
+    display: block;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #225505;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.route-item p {
+    width: 100%;
+    text-align: center !important;
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #032008;
+}
+
+.route-marker {
+    margin: 0 auto;
+}
+
+.route-line {
+    margin: 0 auto;
+}
+
+/* RECOMMENDED PLACES*/
+
+.recommended-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+
+    padding-top: 20px;
+    border-top: 1px solid rgba(34, 85, 5, 0.2);
+}
+
+.recommended-section h2 {
+    width: auto;
+    flex: 0 1 auto;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #225505;
+}
+
+#places-list {
+    list-style: none;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#places-list li {
+    width: 100%;
+}
+
+/* CLICKABLE PLACE CARD */
+.place-card {
+    width: 100%;
+    padding: 14px 16px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+
+    font-family: 'Quicksand', sans-serif;
+    color: #032008;
+    text-align: center;
+
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* PLACE NAME AND COST */
+.place-card-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.place-card-name {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1rem;
+    font-weight: 800;
+    color: #225505;
+}
+
+.place-card-cost {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #032008;
+}
+
+/* HOVER EFFECT */
+.place-card:hover {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(34, 85, 5, 0.4);
+    transform: translateY(-2px);
+}
+
+/* SELECTED PLACE */
+.place-card.selected {
+    background: rgba(34, 85, 5, 0.15);
+    border: 2px solid #225505;
+}
+
+/* RIGHT PANEL - MAP */
+
+.map-panel {
+    width: 100%;
+}
+
+.map-wrapper {
+    width: 100%;
+    flex: 1;
+
+    min-height: 400px;
+
+    overflow: hidden;
+    border-radius: 15px;
+
+    background: rgba(255, 255, 255, 0.3);
+}
+
+#map {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+
+    border: none;
+    border-radius: 15px;
+}
+
+/*  BOTTOM PANEL - CURRENT PLACE */
+
+.current-place-panel {
+    width: min(100%, 1400px);
+    text-align: left;
+}
+
+.current-place-layout {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 35% 65%;
+    gap: 25px;
+
+    align-items: center;
+}
+
+/* CURRENT PLACE IMAGE */
+
+.current-place-image {
+    width: 100%;
+    height: 260px;
+
+    position: relative;
+    overflow: hidden;
+
+    background: rgba(255, 255, 255, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
+}
+
+#current-place-img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+#current-place-img[hidden] {
+    display: none !important;
+}
+
+.image-empty {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    color: #225505;
+}
+
+.empty-icon {
+    font-size: 3rem;
+}
+
+.image-empty p {
+    font-size: 0.85rem;
+}
+
+/* Hide the empty image placeholder when an image is selected */
+.current-place-image:has(#current-place-img:not([hidden])) .image-empty {
+    display: none;
+}
+
+/* CURRENT PLACE INFORMATION */
+
+.current-place-information {
+    width: 100%;
+    min-width: 0;
+    text-align: left;
+}
+
+.current-place-label {
+    display: block;
+    color: #225505;
+
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+
+    margin-bottom: 10px;
+}
+
+.current-place-information h2 {
+    color: #225505;
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-weight: 800;
+
+    margin-bottom: 12px;
+    overflow-wrap: anywhere;
+}
+
+.current-place-information p {
+    color: #032008;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+#navigate-message {
+    margin-top: 12px;
+}
+
+/*  FINISH TRAVEL BUTTON - ORIGINAL*/
+
+#complete-btn {
+    padding: 12px 30px;
+
+    background: #225505;
+    color: #fff;
+
+    border: none;
+    border-radius: 30px;
+
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    margin-top: 15px;
+}
+
+#complete-btn:hover {
+    background: #348a54;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 
+MEDIA QUERIES */
+
+@media (max-width: 768px) {
+
+    main {
+        padding: 120px 15px 35px;
+    }
+
+    /* Stack the 40/60 panels on smaller screens */
+    .navigate-layout {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .navigate-layout > section,
+    .current-place-panel {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .map-wrapper {
+        min-height: 350px;
+    }
+
+    #map {
+        min-height: 350px;
+    }
+
+    .current-place-layout {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .current-place-image {
+        height: 230px;
+    }
+
+}
+
+footer {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+/* SMALL MOBILE SCREENS */
+
+@media (max-width: 400px) {
+
+    main h1 {
+        font-size: 1.4rem;
+    }
+
+    .navigate-layout > section,
+    .current-place-panel {
+        padding: 15px;
+    }
+
+    .map-wrapper,
+    #map {
+        min-height: 280px;
+    }
+
+    .travel-details {
+        padding: 12px 8px;
+        gap: 8px;
+    }
+}

@@ -1,0 +1,192 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { min-height: 100%; }
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.08);
+    z-index: -1;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    }
+
+/* sizes*/
+:root {
+    --card: clamp(300px, 36vw, 520px);
+    --btn: clamp(130px, 14vw, 200px);
+}
+
+/*main*/
+main {
+    flex: 1 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: clamp(16px, 3vh, 36px);
+    padding: clamp(100px, 12vh, 150px) 20px 30px;
+    position: relative;
+    z-index: 2;
+}
+
+main h1 {
+    max-width: 24ch;
+    font-size: clamp(1.6rem, 3.2vw, 3rem);
+    font-weight: 800;
+    line-height: 1.2;
+    color: #eae70a;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 5px rgba(13, 53, 4, 0.5);
+}
+
+/* card and GO button side by side*/
+.journey-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(8px, 2vw, 30px);
+    width: 100%;
+}
+
+/* journey card-same with plan pagee */
+.select-card {
+    position: relative;
+    width: var(--card);
+    aspect-ratio: 475 / 225;
+    flex-shrink: 0;
+}
+
+.card-border {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.border-title {
+    position: absolute;
+    top: 17%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #e9f5e2;
+    font-size: calc(var(--card) * 0.043);
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: 2px;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+/* dashed container inside the card*/
+.pill {
+    position: absolute;
+    left: 6.3%;
+    top: 40%;
+    width: 83.4%;
+}
+
+.pill img { display: block; width: 100%; height: auto; pointer-events: none; }
+
+.pill select {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 84%;
+    height: 66%;
+    padding: 0 0.9em;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #225505;
+    font-family: 'Quicksand', sans-serif;
+    font-size: max(0.8rem, calc(var(--card) * 0.034));
+    font-weight: 700;
+    outline: none;
+    cursor: pointer;
+}
+.pill select:focus { border-color: #348a54; box-shadow: 0 0 0 3px rgba(52, 138, 84, 0.2); }
+.pill select option { background: #fff; color: #225505; }
+
+.sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+/* 
+   GO button */
+#save-type-btn {
+    position: relative;
+    flex-shrink: 0;
+    width: var(--btn);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+#save-type-btn:hover { transform: scale(1.05); }
+#save-type-btn:focus-visible { outline: 3px solid #fff; border-radius: 50%; }
+
+.next-image { display: block; width: 100%; height: auto; pointer-events: none; }
+
+.next-subtitle {
+    position: absolute;
+    top: 50%;
+    left: 51%;
+    transform: translate(-50%, -50%);
+    color: #e7cd0f;
+    font-family: 'Quicksand', sans-serif;
+    font-size: calc(var(--btn) * 0.14);
+    font-weight: 800;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+#type-message {
+    min-height: 1.4em;
+    font-size: 1rem;
+    color: #032008;
+    font-weight: 700;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.6);
+}
+
+footer {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+/* media queriesss */
+@media (max-width: 768px) {
+    :root { --card: min(60vw, 420px); --btn: min(26vw, 140px); }
+    main { padding: 110px 16px 30px; }
+}
+
+/* very masikip na screens */
+@media (max-width: 520px) {
+    :root { --card: min(88vw, 420px); --btn: 130px; }
+}
