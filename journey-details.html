@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <title>Journey Details | JeRaiVaNel</title>
+      
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="css/base.css">
+      <link rel="stylesheet" href="css/navbar.css">
+      <link rel="stylesheet" href="css/effects.css">
+      <link rel="stylesheet" href="css/details.css">
+          <link rel="stylesheet" href="css/interface.css">
+      </head>
+      <body data-page="details">
+      <nav id="navbar" class="navbar">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="plan-journey.html">Plan Journey</a></li>
+          <li><a href="explore.html">Explore</a></li>
+          <li><a href="navigate.html">Navigate</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul>
+      </nav>
+      <main class="page dt">
+        <a class="back" href="complete-journey.html" data-back>Back</a>
+        <img class="dt-title" src="images/jd-title.png" alt="Journey Details">
+        <section class="dt-top">
+          <div>
+            <p class="stat stat-time">Travel Time:<span id="dt-time">...</span></p>
+            <p class="stat stat-dist">Travel Distance:<span id="dt-dist">...</span></p>
+            <p class="route-line" id="dt-route" hidden></p>
+          </div>
+          <div class="badge" id="dt-badge"></div>
+        </section>
+        <section class="visited">
+          <h2 >Places Visited</h2>
+          <ul id="dt-places" class="polaroids"></ul>
+        </section>
+        <div class="dt-act"><a class="btn" href="plan-journey.html">Plan Another Journey</a></div>
+      </main>
+      <div class="compass" aria-hidden="true"></div>
+      <script src="js/app.js"></script>
+          <script src="js/effects.js" defer></script>
+      </body>
+</html>

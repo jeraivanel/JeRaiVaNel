@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JeRaiVaNeL | Plan Journey</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/planstyle.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/effects.css">
+    <link rel="stylesheet" href="css/interface.css">
+</head>
+
+<body class="page-plan">
+
+    <div class="page-content">
+
+        <!--
+             NAVIGATION BAR
+         -->
+
+        <nav id="navbar" class="navbar">
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="plan-journey.html" class="active">Plan Journey</a></li>
+    <li><a href="explore.html">Explore</a></li>
+    <li><a href="navigate.html">Navigate</a></li>
+    <li><a href="about.html">About Us</a></li>
+  </ul>
+</nav>
+
+
+        <!-- 
+             MAIN CONTENT
+         -->
+
+        <main class="main-content">
+
+            <!-- HEADING IMAGE -->
+
+            <div class="heading-container">
+                <img src="images/plan-heading.png" class="heading-image" alt="Where are you headed?">
+            </div>
+
+            <!-- JOURNEY SELECTION CARDS -->
+            <div class="journey-container">
+
+                <!-- LEFT CARD: STARTING POINT -->
+                <div class="select-card start-card">
+                    <img src="images/plan-border-start.png" class="card-border" alt="">
+                    <span class="border-title">STARTING POINT</span>
+                    <div class="pill">
+                        <img src="images/plan-pill-start.png" alt="">
+                        <select id="start" name="start">
+                            <option value="">Choose Here</option>
+                            <option value="Capas">Capas</option>
+                            <option value="Concepcion">Concepcion</option>
+                            <option value="Tarlac City">Tarlac City</option>
+                            <option value="Gerona">Gerona</option>
+                            <option value="La Paz">La Paz</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- RIGHT CARD: DESTINATION -->
+                <div class="select-card destination-card">
+                    <img src="images/plan-border-destination.png" class="card-border" alt="">
+                    <span class="border-title">DESTINATION</span>
+                    <div class="pill">
+                        <img src="images/plan-pill-destination.png" alt="">
+                        <select id="destination" name="destination">
+                            <option value="">Choose Here</option>
+                            <option value="Capas">Capas</option>
+                            <option value="Concepcion">Concepcion</option>
+                            <option value="Tarlac City">Tarlac City</option>
+                            <option value="Gerona">Gerona</option>
+                            <option value="La Paz">La Paz</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- NEXT BUTTON -->
+            <button type="button" id="save-route-btn">
+                <img src="images/plan-compass.png" class="next-image" alt="">
+                <span class="next-subtitle">GO!</span>
+            </button>
+
+            <!-- ROUTE MESSAGE -->
+
+            <p id="route-message"></p>
+
+        </main>
+
+
+        <!-- 
+             FOOTER
+         -->
+
+        <footer>
+           <p>&copy; 2026 JeRaiVaNel. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+
+    <!-- 
+         JAVASCRIPT FILES -->
+
+    <script src="js/journey.js"></script>
+    <script src="js/plan-journey.js"></script>
+
+    <script src="js/effects.js" defer></script>
+</body>
+</html>

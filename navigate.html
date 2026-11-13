@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JeRaiVaNeL | Navigate</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/navigatestyle.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/effects.css">
+    <link rel="stylesheet" href="css/interface.css">
+</head>
+
+<body>
+    <nav id="navbar" class="navbar">
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="plan-journey.html">Plan Journey</a></li>
+    <li><a href="explore.html">Explore</a></li>
+    <li><a href="navigate.html" class="active">Navigate</a></li>
+    <li><a href="about.html">About Us</a></li>
+  </ul>
+</nav>
+
+    <main>
+
+        <!-- TOP TWO-COLUMN LAYOUT -->
+
+        <div class="navigate-layout">
+
+            <!-- 
+                 LEFT PANEL: JOURNEY AND PLACES -->
+
+            <section class="journey-panel">
+
+                <div class="panel-heading">
+                    <span class="panel-number">01</span>
+                    <h2>Your Journey</h2>
+                </div>
+
+                <h1 id="journey-type-label">Your Journey</h1>
+
+                <!-- STARTING POINT -->
+                <div class="route-details">
+
+                    <div class="route-item">
+                        <span class="route-marker start-marker"></span>
+
+                        <div>
+                            <strong>Starting point</strong>
+                            <p id="route-start">Loading...</p>
+                        </div>
+                    </div>
+
+                    <div class="route-line"></div>
+
+                    <!-- DESTINATION -->
+                    <div class="route-item">
+                        <span class="route-marker destination-marker"></span>
+
+                        <div>
+                            <strong>Destination</strong>
+                            <p id="route-destination">Loading...</p>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- RECOMMENDED PLACES -->
+
+                <div class="recommended-section">
+
+                    <div class="panel-heading">
+                        <span class="panel-number">02</span>
+                        <h2>Recommended Places</h2>
+                    </div>
+
+                    <p class="section-description">
+                        Select a place to view its details.
+                    </p>
+
+                    <ul id="places-list">
+                        <li>Place recommendations will appear here.</li>
+                    </ul>
+
+                </div>
+
+            </section>
+
+
+            <!-- 
+                 RIGHT PANEL: MAP -->
+
+            <section class="map-panel">
+
+                <div class="panel-heading">
+                    <span class="panel-number">03</span>
+                    <h2>Journey Map</h2>
+                </div>
+
+                <div class="map-wrapper">
+
+                    <iframe
+                        id="map"
+                        title="Map"
+                        width="100%"
+                        height="400">
+                    </iframe>
+
+                </div>
+
+               
+
+            </section>
+
+        </div>
+
+
+        <!--
+             BOTTOM PANEL: CURRENT PLACE -->
+
+        <section class="current-place-panel">
+
+            <div class="panel-heading">
+                <span class="panel-number">04</span>
+                <h2>Current Place</h2>
+            </div>
+
+            <div class="current-place-layout">
+
+                <!-- PLACE IMAGE -->
+
+                <div class="current-place-image">
+
+                    <img
+                        id="current-place-img"
+                        alt="Selected place"
+                        hidden>
+
+                    <div class="image-empty">
+                        <span class="empty-icon">⌖</span>
+                        <p>No place image selected</p>
+                    </div>
+
+                </div>
+
+
+                <!-- PLACE INFORMATION -->
+
+                <div class="current-place-information">
+
+                    <span class="current-place-label">
+                        SELECTED PLACE
+                    </span>
+
+                    <h2 id="current-place-name">
+                        No current place selected yet
+                    </h2>
+
+                    <p id="current-place-desc">
+                        Choose one of the recommended places above to
+                        display its information here.
+                    </p>
+
+                    <p id="navigate-message">
+                        Your selected journey is ready.
+                    </p>
+
+                    <button type="button" id="complete-btn">
+                        Finish Travel
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- 
+         FOOTER - ORIGINAL -->
+
+    <footer>
+        <p>&copy; 2026 JeRaiVaNel. All rights reserved.</p>
+    </footer>
+
+
+    <!-- 
+         JAVASCRIPT FILES -->
+
+    <script src="js/journey.js"></script>
+    <script src="js/places.js"></script>
+    <script src="js/navigate.js"></script>
+
+    <script src="js/effects.js" defer></script>
+</body>
+</html>

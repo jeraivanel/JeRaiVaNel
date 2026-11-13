@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JeRaiVaNel | Explore</title>
+
+    <link rel="stylesheet" href="css/explorestyle.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/effects.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/interface.css">
+</head>
+    <body>
+
+        <nav id="navbar" class="navbar">
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="plan-journey.html">Plan Journey</a></li>
+            <li><a href="explore.html" class="active">Explore</a></li>
+            <li><a href="navigate.html">Navigate</a></li>
+            <li><a href="about.html">About Us</a></li>
+    </ul>
+    </nav>
+
+        <main>
+            <h1>What type of journey do you prefer?</h1>
+
+            <!-- JOURNEY TYPE CARD + GO BUTTON (side by side) -->
+            <div class="journey-row">
+
+                <section class="select-card">
+                    <img src="images/E_type.png" class="card-border" alt="">
+
+                    <h2 class="border-title">CHOOSE YOUR<br>JOURNEY TYPE</h2>
+
+                    <div class="pill">
+                        <img src="images/E_choose_here.png" alt="">
+                        <label for="journey-type" class="sr-only">Journey type</label>
+                        <select id="journey-type" name="journey-type">
+                            <option value="">Choose Here</option>
+                            <option value="Scenic">Scenic</option>
+                            <option value="Foodie">Foodie</option>
+                            <option value="Budget">Budget</option>
+                        </select>
+                    </div>
+                </section>
+
+                <button type="button" id="save-type-btn" aria-label="Go">
+                    <img src="images/E_button.png" class="next-image" alt="">
+                    <span class="next-subtitle">GO!</span>
+                </button>
+
+            </div>
+
+            <p id="type-message" aria-live="polite"></p>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 JeRaiVaNel. All rights reserved.</p>
+        </footer>
+
+        <script src="js/journey.js"></script>
+        <script src="js/explore.js"></script>
+        <script src="js/effects.js" defer></script>
+    </body>
+</html>
